@@ -3,24 +3,62 @@ import { Plus, Trash2, ImagePlus } from 'lucide-react';
 import { useRecipeStore } from '@/store/recipeStore';
 import type { Recipe } from '@/types';
 
+interface InitialData {
+  name: string;
+  ingredients: string;
+  steps: string;
+  notes: string;
+  category: string;
+  image: string;
+}
+
 interface RecipeFormProps {
   recipe?: Recipe | null;
+  initialData?: InitialData | null;
   onSubmit: (data: Omit<Recipe, 'id' | 'createdAt' | 'updatedAt'>) => void;
 }
 
-export function RecipeForm({ recipe, onSubmit }: RecipeFormProps) {
+export function RecipeForm({ recipe, initialData, onSubmit }: RecipeFormProps) {
   const { categories, addCategory } = useRecipeStore();
   const [showAddCategory, setShowAddCategory] = useState(false);
   const [newCategoryName, setNewCategoryName] = useState('');
   const [newCategoryColor, setNewCategoryColor] = useState('#FF6B35');
 
-  const [formData, setFormData] = useState({
-    name: recipe?.name || '',
-    category: recipe?.category || categories[0]?.name || '',
-    ingredients: recipe?.ingredients || [''],
-    steps: recipe?.steps || [''],
-    notes: recipe?.notes || '',
-    image: recipe?.image || '',
+  const parseStringToArray = (str: string): string[] => {
+    if (!str) return [''];
+    const lines = str.split('\n').map(line => line.trim()).filter(line => line);
+    return lines.length > 0 ? lines : [''];
+  };
+
+  const [formData, setFormData] = useState(() => {
+    if (recipe) {
+      return {
+        name: recipe.name,
+        category: recipe.category,
+        ingredients: recipe.ingredients,
+        steps: recipe.steps,
+        notes: recipe.notes,
+        image: recipe.image,
+      };
+    }
+    if (initialData) {
+      return {
+        name: initialData.name,
+        category: initialData.category || categories[0]?.name || '',
+        ingredients: parseStringToArray(initialData.ingredients),
+        steps: parseStringToArray(initialData.steps),
+        notes: initialData.notes,
+        image: initialData.image,
+      };
+    }
+    return {
+      name: '',
+      category: categories[0]?.name || '',
+      ingredients: [''],
+      steps: [''],
+      notes: '',
+      image: '',
+    };
   });
 
   const handleIngredientChange = (index: number, value: string) => {
@@ -266,7 +304,7 @@ export function RecipeForm({ recipe, onSubmit }: RecipeFormProps) {
           type="submit"
           className="flex-1 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition-colors"
         >
-          {recipe ? '保存修改' : '创建菜谱'}
+          {recipe ? '保存修改' : (initialData ? '保存菜谱' : '创建菜谱')}
         </button>
       </div>
     </form>
