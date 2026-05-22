@@ -295,7 +295,7 @@ export function CameraPage() {
                     <p className="text-gray-900">{parsedRecipe?.name}</p>
                   </div>
                   
-                  {parsedRecipe?.ingredients.length > 0 && (
+                  {parsedRecipe && parsedRecipe.ingredients.length > 0 && (
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">食材</label>
                       <ul className="text-gray-600 text-sm space-y-1">
@@ -312,7 +312,7 @@ export function CameraPage() {
                     </div>
                   )}
                   
-                  {parsedRecipe?.steps.length > 0 && (
+                  {parsedRecipe && parsedRecipe.steps.length > 0 && (
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">做法</label>
                       <ul className="text-gray-600 text-sm space-y-1">
