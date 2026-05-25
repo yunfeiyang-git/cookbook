@@ -1,8 +1,21 @@
-import { ChefHat, Plus, Upload, Camera } from 'lucide-react';
+import { ChefHat, Plus, Upload, Download } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useRecipeStore } from '@/store/recipeStore';
+import { exportRecipesToTxt, downloadTxtFile } from '@/utils/storage';
 
 export function Header() {
   const navigate = useNavigate();
+  const recipes = useRecipeStore((state) => state.recipes);
+
+  const handleExport = () => {
+    if (recipes.length === 0) {
+      alert('暂无菜谱可导出');
+      return;
+    }
+    const txtContent = exportRecipesToTxt(recipes);
+    const filename = `菜谱大全_${new Date().toLocaleDateString('zh-CN').replace(/\//g, '-')}.txt`;
+    downloadTxtFile(txtContent, filename);
+  };
 
   return (
     <header className="bg-gradient-to-r from-primary to-orange-400 text-white shadow-lg">
@@ -28,11 +41,11 @@ export function Header() {
               <span className="hidden sm:inline">导入</span>
             </button>
             <button
-              onClick={() => navigate('/camera')}
+              onClick={handleExport}
               className="flex items-center gap-2 bg-white/20 text-white px-4 py-2 rounded-lg hover:bg-white/30 transition-all hover:scale-105"
             >
-              <Camera className="w-5 h-5" />
-              <span className="hidden sm:inline">拍照</span>
+              <Download className="w-5 h-5" />
+              <span className="hidden sm:inline">导出</span>
             </button>
           </div>
         </div>

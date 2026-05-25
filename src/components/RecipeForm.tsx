@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Plus, Trash2, ImagePlus } from 'lucide-react';
+import { Plus, Trash2 } from 'lucide-react';
 import { useRecipeStore } from '@/store/recipeStore';
 import type { Recipe } from '@/types';
 
@@ -9,7 +9,6 @@ interface InitialData {
   steps: string;
   notes: string;
   category: string;
-  image: string;
 }
 
 interface RecipeFormProps {
@@ -38,7 +37,6 @@ export function RecipeForm({ recipe, initialData, onSubmit }: RecipeFormProps) {
         ingredients: recipe.ingredients,
         steps: recipe.steps,
         notes: recipe.notes,
-        image: recipe.image,
       };
     }
     if (initialData) {
@@ -48,7 +46,6 @@ export function RecipeForm({ recipe, initialData, onSubmit }: RecipeFormProps) {
         ingredients: parseStringToArray(initialData.ingredients),
         steps: parseStringToArray(initialData.steps),
         notes: initialData.notes,
-        image: initialData.image,
       };
     }
     return {
@@ -57,7 +54,6 @@ export function RecipeForm({ recipe, initialData, onSubmit }: RecipeFormProps) {
       ingredients: [''],
       steps: [''],
       notes: '',
-      image: '',
     };
   });
 
@@ -120,17 +116,6 @@ export function RecipeForm({ recipe, initialData, onSubmit }: RecipeFormProps) {
     }
   };
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        setFormData({ ...formData, image: event.target?.result as string });
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
@@ -187,35 +172,6 @@ export function RecipeForm({ recipe, initialData, onSubmit }: RecipeFormProps) {
               添加
             </button>
           </div>
-        )}
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">图片</label>
-        <div className="flex gap-2">
-          <input
-            type="text"
-            value={formData.image}
-            onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50"
-            placeholder="图片URL或上传本地图片"
-          />
-          <label className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
-            <ImagePlus className="w-5 h-5" />
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageUpload}
-              className="hidden"
-            />
-          </label>
-        </div>
-        {formData.image && (
-          <img
-            src={formData.image}
-            alt="预览"
-            className="mt-2 w-32 h-32 object-cover rounded-lg"
-          />
         )}
       </div>
 

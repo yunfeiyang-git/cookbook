@@ -5,7 +5,6 @@ export interface Recipe {
   ingredients: string[];
   steps: string[];
   notes: string;
-  image: string;
   createdAt: Date;
   updatedAt: Date;
 }

@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useRecipeStore } from '@/store/recipeStore';
-import { ArrowLeft, Edit3, Trash2, Clock, Users, Calendar } from 'lucide-react';
+import { ArrowLeft, Edit3, Trash2, Clock, Users, Calendar, ChefHat } from 'lucide-react';
 
 export function RecipeDetail() {
   const { id } = useParams<{ id: string }>();
@@ -64,22 +64,24 @@ export function RecipeDetail() {
       </div>
 
       <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-        <div className="relative h-64 overflow-hidden">
-          <img
-            src={recipe.image || 'https://via.placeholder.com/600x400?text=No+Image'}
-            alt={recipe.name}
-            className="w-full h-full object-cover"
-          />
-          <div
-            className="absolute top-4 right-4 px-3 py-1 rounded-full text-sm text-white font-medium"
-            style={{ backgroundColor: category?.color || '#FF6B35' }}
-          >
-            {recipe.category}
-          </div>
-        </div>
-
         <div className="p-6">
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">{recipe.name}</h1>
+          <div className="flex items-center gap-4 mb-4">
+            <div 
+              className="w-16 h-16 rounded-full flex items-center justify-center"
+              style={{ backgroundColor: `${category?.color || '#FF6B35'}20` }}
+            >
+              <ChefHat className="w-8 h-8" style={{ color: category?.color || '#FF6B35' }} />
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold text-gray-800">{recipe.name}</h1>
+              <span
+                className="inline-block px-3 py-1 rounded-full text-sm text-white font-medium mt-1"
+                style={{ backgroundColor: category?.color || '#FF6B35' }}
+              >
+                {recipe.category}
+              </span>
+            </div>
+          </div>
 
           <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-6">
             <span className="flex items-center gap-1">

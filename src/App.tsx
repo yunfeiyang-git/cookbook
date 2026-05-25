@@ -5,7 +5,6 @@ import { RecipeDetail } from '@/pages/RecipeDetail';
 import { CreateRecipe } from '@/pages/CreateRecipe';
 import { EditRecipe } from '@/pages/EditRecipe';
 import { ImportRecipe } from '@/pages/ImportRecipe';
-import { CameraPage } from '@/pages/CameraPage';
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
           <Route path="/create" element={<CreateRecipe />} />
           <Route path="/edit/:id" element={<EditRecipe />} />
           <Route path="/import" element={<ImportRecipe />} />
-          <Route path="/camera" element={<CameraPage />} />
         </Routes>
       </main>
     </div>
