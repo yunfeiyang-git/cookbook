@@ -34,7 +34,6 @@ export function EditRecipe() {
     ingredients: string[];
     steps: string[];
     notes: string;
-    image: string;
   }) => {
     updateRecipe(recipe.id, data);
     navigate(`/recipe/${recipe.id}`);

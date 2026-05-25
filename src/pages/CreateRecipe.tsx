@@ -1,15 +1,14 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import { RecipeForm } from '@/components/RecipeForm';
 import { useRecipeStore } from '@/store/recipeStore';
-import { ArrowLeft, Plus, Scan } from 'lucide-react';
+import { ArrowLeft, Plus } from 'lucide-react';
 
-interface OcrRecipeData {
+interface InitialRecipeData {
   name: string;
   ingredients: string;
   steps: string;
   notes: string;
   category: string;
-  image: string;
 }
 
 export function CreateRecipe() {
@@ -17,8 +16,7 @@ export function CreateRecipe() {
   const location = useLocation();
   const addRecipe = useRecipeStore((state) => state.addRecipe);
   
-  const state = location.state as { fromOcr?: boolean; recipeData?: OcrRecipeData };
-  const isFromOcr = state?.fromOcr === true;
+  const state = location.state as { recipeData?: InitialRecipeData };
   const initialData = state?.recipeData;
 
   const handleSubmit = (data: {
@@ -27,7 +25,6 @@ export function CreateRecipe() {
     ingredients: string[];
     steps: string[];
     notes: string;
-    image: string;
   }) => {
     addRecipe(data);
     navigate('/');
@@ -46,24 +43,10 @@ export function CreateRecipe() {
       </div>
 
       <div className="bg-white rounded-xl shadow-lg p-6">
-        <div className="flex items-center gap-2 mb-2">
-          {isFromOcr ? (
-            <Scan className="w-6 h-6 text-green-500" />
-          ) : (
-            <Plus className="w-6 h-6 text-primary" />
-          )}
-          <h1 className="text-xl font-bold text-gray-800">
-            {isFromOcr ? '编辑OCR识别结果' : '创建菜谱'}
-          </h1>
+        <div className="flex items-center gap-2 mb-6">
+          <Plus className="w-6 h-6 text-primary" />
+          <h1 className="text-xl font-bold text-gray-800">创建菜谱</h1>
         </div>
-        
-        {isFromOcr && (
-          <div className="mb-6 p-4 bg-green-50 rounded-lg">
-            <p className="text-sm text-green-700">
-              ✅ 这是从OCR识别结果导入的菜谱，请检查并修改后保存。
-            </p>
-          </div>
-        )}
         
         <RecipeForm onSubmit={handleSubmit} initialData={initialData} />
       </div>

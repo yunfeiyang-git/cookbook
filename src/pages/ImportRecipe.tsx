@@ -91,11 +91,10 @@ export function ImportRecipe() {
     
     addRecipe({
       name: parsedRecipe.name,
-      category: '家常菜',
+      category: '热菜',
       ingredients: parsedRecipe.ingredients,
       steps: parsedRecipe.steps,
       notes: parsedRecipe.notes,
-      image: '',
     });
     
     setImportSuccess(true);
