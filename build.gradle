@@ -1,0 +1,22 @@
+// 根目录 build.gradle - 用于Gitee APK构建识别
+// 指向实际的Android项目
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:8.5.0"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+include ':app'
+project(':app').projectDir = new File('android/app')

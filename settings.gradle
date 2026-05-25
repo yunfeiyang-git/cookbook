@@ -1,0 +1,3 @@
+// 根目录 settings.gradle - 用于Gitee APK构建识别
+include ':app'
+project(':app').projectDir = new File('android/app')
