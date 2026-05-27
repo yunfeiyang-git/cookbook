@@ -2,28 +2,13 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven {
-            url = "https://plugins.gradle.org/m2/"
-        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:7.4.2'
-
-        if (System.getenv("CAP_PUBLISH") == "true") {
-            classpath 'io.github.gradle-nexus:publish-plugin:1.3.0'
-        }
     }
 }
 
-tasks.withType(Javadoc).all { enabled = false }
-
 apply plugin: 'com.android.library'
-
-if (System.getenv("CAP_PUBLISH") == "true") {
-    apply plugin: 'io.github.gradle-nexus.publish-plugin'
-    apply from: file('../scripts/publish-root.gradle')
-    apply from: file('../scripts/publish-module.gradle')
-}
 
 android {
     namespace = "com.getcapacitor.android"
@@ -34,7 +19,6 @@ android {
         versionCode 1
         versionName "1.0"
         consumerProguardFiles 'proguard-rules.pro'
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -42,18 +26,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    lintOptions {
-        baseline file("lint-baseline.xml")
-        abortOnError = false
-        warningsAsErrors = false
-        lintConfig = file('lint.xml')
-    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
-    }
-    publishing {
-        singleVariant("release")
     }
 }
 
@@ -70,4 +45,3 @@ dependencies {
     implementation "androidx.coordinatorlayout:coordinatorlayout:1.2.0"
     implementation "androidx.webkit:webkit:1.6.0"
 }
-
