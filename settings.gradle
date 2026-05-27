@@ -1,8 +1,4 @@
 // 根目录 settings.gradle - 用于Gitee APK构建识别
 include ':app'
-include ':capacitor-cordova-android-plugins'
-include ':capacitor-android'
 
 project(':app').projectDir = new File('android/app')
-project(':capacitor-cordova-android-plugins').projectDir = new File('android/capacitor-cordova-android-plugins')
-project(':capacitor-android').projectDir = new File('android/capacitor-android')
