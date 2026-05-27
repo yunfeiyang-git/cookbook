@@ -17,6 +17,3 @@ allprojects {
         mavenCentral()
     }
 }
-
-include ':app'
-project(':app').projectDir = new File('android/app')
