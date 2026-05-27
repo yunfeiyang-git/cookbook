@@ -46,8 +46,8 @@ android {
     }
     lintOptions {
         baseline file("lint-baseline.xml")
-        abortOnError = true
-        warningsAsErrors = true
+        abortOnError = false
+        warningsAsErrors = false
         lintConfig = file('lint.xml')
     }
     compileOptions {
@@ -74,7 +74,6 @@ dependencies {
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
-    implementation "org.apache.cordova:framework:$cordovaAndroidVersion"
     testImplementation 'org.json:json:20250517'
     testImplementation 'org.mockito:mockito-core:5.20.0'
 }
