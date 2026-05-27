@@ -2,8 +2,8 @@
 // 指向实际的Android项目
 
 ext {
-    compileSdkVersion = 34
-    targetSdkVersion = 34
+    compileSdkVersion = 36
+    targetSdkVersion = 36
     minSdkVersion = 24
     androidxAppCompatVersion = '1.7.1'
     coreSplashScreenVersion = '1.0.1'
@@ -24,7 +24,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:8.5.0"
+        classpath "com.android.tools.build:gradle:8.13.0"
     }
 }
 
