@@ -2,8 +2,8 @@
 // 指向实际的Android项目
 
 ext {
-    compileSdkVersion = 36
-    targetSdkVersion = 36
+    compileSdkVersion = 34
+    targetSdkVersion = 34
     minSdkVersion = 24
     androidxAppCompatVersion = '1.7.1'
     coreSplashScreenVersion = '1.0.1'
