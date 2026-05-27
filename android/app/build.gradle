@@ -36,7 +36,7 @@ dependencies {
     implementation project(':capacitor-android')
 }
 
-apply from: 'capacitor.build.gradle'
+
 
 try {
     def servicesJSON = file('google-services.json')
