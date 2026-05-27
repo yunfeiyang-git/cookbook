@@ -1,6 +1,18 @@
 // 根目录 build.gradle - 用于Gitee APK构建识别
 // 指向实际的Android项目
 
+ext {
+    compileSdkVersion = 34
+    targetSdkVersion = 34
+    minSdkVersion = 24
+    androidxAppCompatVersion = '1.6.1'
+    androidxCoreSplashScreenVersion = '1.0.1'
+    androidxCoordinatorLayoutVersion = '1.2.0'
+    junitVersion = '4.13.2'
+    androidxJunitVersion = '1.1.5'
+    androidxEspressoCoreVersion = '3.5.1'
+}
+
 buildscript {
     repositories {
         google()
