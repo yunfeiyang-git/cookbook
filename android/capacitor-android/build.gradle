@@ -29,10 +29,10 @@ if (System.getenv("CAP_PUBLISH") == "true") {
 
 android {
     namespace = "com.getcapacitor.android"
-    compileSdk = project.hasProperty('compileSdkVersion') ? rootProject.ext.compileSdkVersion : 34
+    compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        minSdkVersion project.hasProperty('minSdkVersion') ? rootProject.ext.minSdkVersion : 24
-        targetSdkVersion project.hasProperty('targetSdkVersion') ? rootProject.ext.targetSdkVersion : 34
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
         consumerProguardFiles 'proguard-rules.pro'
