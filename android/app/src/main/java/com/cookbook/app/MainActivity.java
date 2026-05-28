@@ -1,5 +1,12 @@
 package com.cookbook.app;
 
-import com.getcapacitor.BridgeActivity;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
 
-public class MainActivity extends BridgeActivity {}
+public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+}
