@@ -1,12 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace = "com.cookbook.app"
-    compileSdk = 34
+    compileSdkVersion 30
     defaultConfig {
         applicationId "com.cookbook.app"
         minSdkVersion 24
-        targetSdkVersion 34
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -18,19 +17,18 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
 repositories {
     google()
+    jcenter()
     mavenCentral()
 }
 
 dependencies {
-    implementation "androidx.appcompat:appcompat:1.6.1"
-    implementation "androidx.coordinatorlayout:coordinatorlayout:1.2.0"
-    implementation "androidx.core:core-splashscreen:1.0.1"
-    implementation "com.getcapacitor:capacitor-android:6.5.0"
+    implementation "androidx.appcompat:appcompat:1.3.1"
+    implementation "com.getcapacitor:capacitor-android:3.5.1"
 }
