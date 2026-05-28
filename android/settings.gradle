@@ -1,3 +1,1 @@
 include ':app'
-include ':capacitor-android'
-project(':capacitor-android').projectDir = new File('./capacitor-android')
