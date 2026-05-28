@@ -1,12 +1,15 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+}
 
 android {
-    compileSdkVersion 30
+    namespace 'com.cookbook.app'
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.cookbook.app"
-        minSdkVersion 22
-        targetSdkVersion 30
+        minSdk 24
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -20,12 +23,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.getcapacitor:capacitor-android:3.5.1'
 }
