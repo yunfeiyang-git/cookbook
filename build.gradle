@@ -2,20 +2,20 @@
 // 指向实际的Android项目
 
 ext {
-    compileSdkVersion = 36
-    targetSdkVersion = 36
+    compileSdkVersion = 34
+    targetSdkVersion = 34
     minSdkVersion = 24
-    androidxAppCompatVersion = '1.7.1'
+    androidxAppCompatVersion = '1.6.1'
     coreSplashScreenVersion = '1.0.1'
-    androidxCoordinatorLayoutVersion = '1.3.0'
+    androidxCoordinatorLayoutVersion = '1.2.0'
     junitVersion = '4.13.2'
-    androidxJunitVersion = '1.3.0'
-    androidxEspressoCoreVersion = '3.7.0'
-    androidxActivityVersion = '1.11.0'
-    androidxCoreVersion = '1.17.0'
-    androidxFragmentVersion = '1.8.9'
-    androidxWebkitVersion = '1.14.0'
-    cordovaAndroidVersion = '14.0.1'
+    androidxJunitVersion = '1.1.5'
+    androidxEspressoCoreVersion = '3.5.1'
+    androidxActivityVersion = '1.8.0'
+    androidxCoreVersion = '1.12.0'
+    androidxFragmentVersion = '1.6.1'
+    androidxWebkitVersion = '1.6.0'
+    cordovaAndroidVersion = '12.0.1'
 }
 
 buildscript {
@@ -24,7 +24,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:8.13.0"
+        classpath "com.android.tools.build:gradle:7.4.2"
     }
 }
 
