@@ -1,4 +1,6 @@
 // 根目录 settings.gradle - 用于Gitee APK构建识别
 include ':app'
+include ':capacitor-android'
 
 project(':app').projectDir = new File('android/app')
+project(':capacitor-android').projectDir = new File('android/capacitor-android')
