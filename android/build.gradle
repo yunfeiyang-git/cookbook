@@ -13,6 +13,9 @@ allprojects {
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
+        maven { url 'https://oss.sonatype.org/content/repositories/public/' }
+        maven { url 'https://repo.jfrog.org/artifactory/libs-release/' }
+        maven { url 'https://maven.pkg.github.com/ionic-team' }
     }
 }
 
